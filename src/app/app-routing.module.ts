@@ -1,18 +1,19 @@
+// app-routing.module.ts
+
 import { NgModule } from '@angular/core';
-import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './login/login.component'; // Import the LoginComponent
+import { RouterModule, Routes } from '@angular/router';
+import { LoginComponent } from './login/login.component';
+import { SignupComponent } from './signup/signup.component';
 
 const routes: Routes = [
-  {
-    path: '', // Empty path means it will be the default route
-    component: LoginComponent // Set the LoginComponent as the component for the home page
-  }
+  { path: 'login', component: LoginComponent },
+  { path: 'signup', component: SignupComponent },
+  // Add other routes as needed
+  { path: '', redirectTo: '/login', pathMatch: 'full' }, // Default route
 ];
 
 @NgModule({
-  imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
-  ],
+  imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
