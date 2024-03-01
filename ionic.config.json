@@ -1,0 +1,7 @@
+{
+  "name": "Alerto24",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
