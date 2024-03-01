@@ -1,35 +1,28 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 
 @Component({
   selector: 'app-signup',
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.scss'],
 })
-export class SignupComponent  implements OnInit {
 
-  constructor() { }
+export class SignupComponent {
 
-  ngOnInit(): void {
-    // Perform initialization logic here
-    this.setupLoginForm();
-    this.checkLoggedInStatus();
+  constructor(private afAuth: AngularFireAuth) { }
+
+  fullName: string = '';
+  email: string = '';
+  password: string = '';
+  signUpResult: string = '';
+
+  signUp() {
+    this.afAuth.createUserWithEmailAndPassword(this.email, this.password)
+      .then(() => {
+        this.signUpResult = 'Sign-up successful!';
+      })
+      .catch(error => {
+        this.signUpResult = `Sign-up failed: ${error.message}`;
+      });
   }
-
-  private setupLoginForm(): void {
-    // Set up form controls, validators, etc.
-    // Example:
-    // this.loginForm = this.formBuilder.group({
-    //   email: ['', Validators.required],
-    //   password: ['', Validators.required]
-    // });
-  }
-
-  private checkLoggedInStatus(): void {
-    // Check if the user is already logged in
-    // Example:
-    // if (this.authService.isLoggedIn()) {
-    //   this.router.navigate(['/dashboard']);
-    // }
-  }
-
 }
