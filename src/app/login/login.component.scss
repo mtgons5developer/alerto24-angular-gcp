@@ -1,0 +1,5 @@
+/* global styles.css or component-specific styles.scss */
+input:-webkit-autofill {
+    -webkit-box-shadow: none !important; /* Disable box shadow */
+    background-color: transparent !important; /* Set background color to transparent */
+}
