@@ -38,4 +38,4 @@ const firebaseConfig = environment.firebaseConfig;
   bootstrap: [AppComponent],
 })
 export class AppModule {}
-export class SignupModule { }
+// export class SignupModule { }

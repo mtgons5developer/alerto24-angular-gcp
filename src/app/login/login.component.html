@@ -7,16 +7,21 @@
 <ion-content>
   <ion-item>
     <ion-label position="floating">Email</ion-label>
-    <ion-input type="email"></ion-input>
+    <ion-input type="email" [(ngModel)]="email"></ion-input>
   </ion-item>
 
   <ion-item>
     <ion-label position="floating">Password</ion-label>
-    <ion-input type="password"></ion-input>
+    <ion-input type="password" [(ngModel)]="password"></ion-input>
   </ion-item>
 
-  <ion-button expand="block" color="primary">Login</ion-button>
+  <ion-button expand="block" color="primary" (click)="login()">Login</ion-button>
 
   <!-- Add the Signup Component -->
   <ion-button expand="block" color="secondary" routerLink="/signup">Sign Up</ion-button>
+  
+  <!-- Centered login status message -->
+  <div class="ion-text-center">
+    <ion-label *ngIf="loginStatus">{{ loginStatus }}</ion-label>
+  </div>
 </ion-content>

@@ -4,7 +4,12 @@
 <head>
   <meta charset="utf-8" />
   <title>Ionic App</title>
-
+  <!-- Ionic CDN stylesheets -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/angular@6.0.0-beta.0/css/core.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/angular@6.0.0-beta.0/css/normalize.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/angular@6.0.0-beta.0/css/structure.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@ionic/angular@6.0.0-beta.0/css/typography.css">
+  
   <base href="/" />
 
   <meta name="color-scheme" content="light dark" />
@@ -18,6 +23,23 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
 </head>
+<script type="module">
+  // Import the functions you need from the SDKs you need
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-analytics.js";
+  // TODO: Add SDKs for Firebase products that you want to use
+  // https://firebase.google.com/docs/web/setup#available-libraries
+
+  // Import environment configuration
+  import { environment } from "./environment/environment";
+
+  // Your web app's Firebase configuration
+  const firebaseConfig = environment.firebaseConfig;
+
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  const analytics = getAnalytics(app);
+</script>
 
 <body>
   <app-root></app-root>

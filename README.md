@@ -17,3 +17,4 @@ zone.js | 0.14.4
 Ionic | 7.2.0  
 Capacitor | 5.7.0  
 Firebase | 10.8.1
+Firestore | 1.1.6

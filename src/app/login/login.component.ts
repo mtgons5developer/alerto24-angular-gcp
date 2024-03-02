@@ -1,35 +1,30 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss'],
 })
-export class LoginComponent  implements OnInit {
-  
-  constructor() { }
-  
-  ngOnInit(): void {
-    // Perform initialization logic here
-    this.setupLoginForm();
-    this.checkLoggedInStatus();
-  }
+export class LoginComponent {
+  email: string = '';
+  password: string = '';
+  loginStatus: string = '';
 
-  private setupLoginForm(): void {
-    // Set up form controls, validators, etc.
-    // Example:
-    // this.loginForm = this.formBuilder.group({
-    //   email: ['', Validators.required],
-    //   password: ['', Validators.required]
-    // });
-  }
+  constructor(private auth: AngularFireAuth, private router: Router) { }
 
-  private checkLoggedInStatus(): void {
-    // Check if the user is already logged in
-    // Example:
-    // if (this.authService.isLoggedIn()) {
-    //   this.router.navigate(['/dashboard']);
-    // }
+  login() {
+    this.auth.signInWithEmailAndPassword(this.email, this.password)
+      .then((userCredential) => {
+        // Signed in
+        this.loginStatus = 'Login successful!';
+        this.router.navigate(['/dashboard']); // Redirect to dashboard after successful login
+      })
+      .catch((error) => {
+        // Handle login errors here
+        console.error('Login Error:', error);
+        this.loginStatus = 'Login failed. Please check your credentials.';
+      });
   }
-
 }
