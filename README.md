@@ -1,8 +1,9 @@
+Android + Firebase Authentication + Firestore
+
 Angular CLI: 17.2.2  
 Node: 18.19.1  
 Package Manager: npm 10.5.0  
 OS: darwin arm64  
-Android + Firebase Authentication
 Package | Version
 ------- | -------
 @angular-devkit/architect | 0.1702.2  
