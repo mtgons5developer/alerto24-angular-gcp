@@ -25,5 +25,6 @@
   <!-- Centered login status message -->
   <div class="ion-text-center">
     <ion-label *ngIf="loginStatus">{{ loginStatus }}</ion-label>
+    <ion-label *ngIf="errorCode">{{ errorCode }}</ion-label> <!-- Display error code if it exists -->
   </div>
 </ion-content>
