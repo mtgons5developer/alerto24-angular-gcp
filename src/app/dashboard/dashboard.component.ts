@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleMap } from '@capacitor/google-maps';
+import { environment } from '../../environments/environment'; // Import the environment file
 
 @Component({
   selector: 'app-dashboard',
@@ -16,23 +17,40 @@ export class DashboardComponent implements OnInit {
     const mapElement = document.getElementById('map');
     if (mapElement) { // Check that mapElement is not null
       try {
-        await GoogleMap.create({
-          element: mapElement, // TypeScript now knows mapElement is an HTMLElement
-          apiKey: 'AIzaSyA_fcN-1XJTEx4po2XljAvpToroTMDzBLc', // Use your actual API key here
-          config: {
-            center: {
-              lat: 37.7749,
-              lng: -122.4194,
+        const coordinates = await this.getCurrentPosition();
+        if (coordinates) {
+          await GoogleMap.create({
+            element: mapElement, // TypeScript now knows mapElement is an HTMLElement
+            apiKey: environment.googleMapsApiKey, // Use the API key from environment file
+            config: {
+              center: {
+                lat: coordinates.coords.latitude,
+                lng: coordinates.coords.longitude,
+              },
+              zoom: 12,
             },
-            zoom: 12,
-          },
-          id: ''
-        });
+            id: ''
+          });
+        } else {
+          console.error('Error getting current position');
+        }
       } catch (error) {
         console.error('Error creating map', error);
       }
     } else {
       console.error('Map element not found');
+    }
+  }
+
+  async getCurrentPosition(): Promise<GeolocationPosition | null> {
+    try {
+      const position = await new Promise<GeolocationPosition>((resolve, reject) => {
+        navigator.geolocation.getCurrentPosition(resolve, reject);
+      });
+      return position;
+    } catch (error) {
+      console.error('Error getting current position:', error);
+      return null;
     }
   }
 }
