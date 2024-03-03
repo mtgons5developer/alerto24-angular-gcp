@@ -1,4 +1,4 @@
-Android + Firebase Authentication + Firestore
+Android + Firebase Authentication + Firestore Integration
 
 Angular CLI: 17.2.2  
 Node: 18.19.1  

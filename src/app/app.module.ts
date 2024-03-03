@@ -18,10 +18,12 @@ import { environment } from '../environments/environment';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms'; // Import FormsModule
 
+import { DashboardComponent } from './dashboard/dashboard.component';
+
 const firebaseConfig = environment.firebaseConfig;
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignupComponent],
+  declarations: [AppComponent, LoginComponent, SignupComponent, DashboardComponent],
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
@@ -31,9 +33,9 @@ const firebaseConfig = environment.firebaseConfig;
     AngularFirestoreModule,
     AngularFireStorageModule,
     CommonModule,
-    FormsModule
+    FormsModule,
   ],
-  
+  exports: [DashboardComponent],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })

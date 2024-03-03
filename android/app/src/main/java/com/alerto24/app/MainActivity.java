@@ -1,4 +1,4 @@
-package io.ionic.starter;
+package com.alerto24.app;
 
 import com.getcapacitor.BridgeActivity;
 
