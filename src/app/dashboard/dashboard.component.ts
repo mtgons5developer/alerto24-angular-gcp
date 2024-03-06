@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleMap } from '@capacitor/google-maps';
+import { Geolocation } from '@capacitor/geolocation';
 import { environment } from '../../environments/environment'; // Import the environment file
+
+// Add near the top of your DashboardComponent class
+// currentPosition: { latitude: number; longitude: number } | null = null;
 
 @Component({
   selector: 'app-dashboard',
@@ -9,8 +13,8 @@ import { environment } from '../../environments/environment'; // Import the envi
 })
 export class DashboardComponent implements OnInit {
 
-  ngOnInit() {
-    this.loadMap();
+  async ngOnInit() {
+      this.loadMap();
   }
 
   async loadMap() {
@@ -19,6 +23,9 @@ export class DashboardComponent implements OnInit {
       try {
         const coordinates = await this.getCurrentPosition();
         if (coordinates) {
+          console.log('Latitude:', coordinates.coords.latitude);
+          console.log('Longitude:', coordinates.coords.longitude);
+          console.log('API Key:', environment.googleMapsApiKey);
           await GoogleMap.create({
             element: mapElement, // TypeScript now knows mapElement is an HTMLElement
             apiKey: environment.googleMapsApiKey, // Use the API key from environment file
@@ -53,4 +60,19 @@ export class DashboardComponent implements OnInit {
       return null;
     }
   }
+
+  async checkGeolocationPermission(): Promise<boolean> {
+    try {
+      const permissionResult = await navigator.permissions.query({ name: 'geolocation' });
+      return permissionResult.state === 'granted';
+    } catch (error) {
+      console.error('Error checking geolocation permission:', error);
+      return false;
+    }
+  }
+
+  getApiKeyFromManifest(): string {
+    return environment.googleMapsApiKey;
+  }
+
 }

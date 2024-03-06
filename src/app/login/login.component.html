@@ -19,9 +19,12 @@
 
   <ion-button expand="block" color="primary" (click)="login()">Login</ion-button>
 
-  <!-- Add the Signup Component -->
+  <!-- Existing Sign Up Button -->
   <ion-button expand="block" color="secondary" routerLink="/signup">Sign Up</ion-button>
-  
+
+  <!-- New Button for Showing Current Location -->
+  <!-- <ion-button expand="block" color="tertiary" (click)="showCurrentLocation()">Show Current Location</ion-button> -->
+
   <!-- Centered login status message -->
   <div class="ion-text-center">
     <ion-label *ngIf="loginStatus">{{ loginStatus }}</ion-label>

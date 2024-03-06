@@ -36,7 +36,7 @@ export class LoginComponent implements OnInit {
       .then((userCredential) => {
         // Signed in
         this.loginStatus = 'Login successful!';
-        this.router.navigate(['/dashboard']); // Redirect to dashboard after successful login
+        // this.router.navigate(['/dashboard']); // Redirect to dashboard after successful login
       })
       .catch((error) => {
         // Handle login errors here

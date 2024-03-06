@@ -17,6 +17,10 @@ android {
         }
     }
     buildTypes {
+        debug {
+            // Define the manifest placeholders to inject the API key
+            manifestPlaceholders = [googleMapsApiKey: "\"" + project.findProperty("googleMapsApiKey") + "\""]
+        }        
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'

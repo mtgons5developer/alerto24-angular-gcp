@@ -23,7 +23,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 const firebaseConfig = environment.firebaseConfig;
 
 @NgModule({
-  declarations: [AppComponent, LoginComponent, SignupComponent, DashboardComponent],
+  declarations: [AppComponent, LoginComponent, SignupComponent],
+  // declarations: [AppComponent, LoginComponent, SignupComponent, DashboardComponent],
   imports: [
     BrowserModule, 
     IonicModule.forRoot(), 
@@ -35,7 +36,7 @@ const firebaseConfig = environment.firebaseConfig;
     CommonModule,
     FormsModule,
   ],
-  exports: [DashboardComponent],
+  // exports: [DashboardComponent],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
 })
