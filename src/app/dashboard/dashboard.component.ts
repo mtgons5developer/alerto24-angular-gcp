@@ -1,10 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GoogleMap } from '@capacitor/google-maps';
 import { Geolocation } from '@capacitor/geolocation';
-import { environment } from '../../environments/environment'; // Import the environment file
-
-// Add near the top of your DashboardComponent class
-// currentPosition: { latitude: number; longitude: number } | null = null;
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-dashboard',

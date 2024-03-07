@@ -31,6 +31,7 @@
     "@capacitor/keyboard": "5.0.8",
     "@capacitor/status-bar": "5.0.7",
     "@ionic/angular": "^7.0.0",
+    "@ionic/cli": "^7.2.0",
     "angularfirestore-deep": "^1.0.9",
     "firebase": "^10.8.1",
     "firestore": "^1.1.6",
